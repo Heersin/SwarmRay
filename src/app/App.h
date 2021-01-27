@@ -12,7 +12,7 @@ public:
     void run();
 
 private:
-    bool runState;
+    bool run_state;
 };
 
 

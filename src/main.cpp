@@ -6,6 +6,9 @@ int main(int argc, char *argv[])
     App app;
     CmdParser cmdcli;
 
-    cmdcli.parse(argc, argv);
+    // invalid command line
+    if ( !cmdcli.parse(argc, argv))
+        return -1;
+
     app.run();
 }

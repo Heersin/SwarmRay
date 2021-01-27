@@ -6,9 +6,9 @@
 #include <iostream>
 
 App::App() {
-    runState = false;
+    run_state = false;
 }
 
 void App::run() {
-    std::cout << "[*] Run State - " << (runState ? "On" : "Off");
+    std::cout << "[*] Run State - " << (run_state ? "On" : "Off");
 }
