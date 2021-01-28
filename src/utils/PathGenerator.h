@@ -14,7 +14,7 @@ using namespace std;
 
 class PathGenerator {
 public:
-    PathGenerator(string path_name);
+    explicit PathGenerator(string path_name);
     PathGenerator();
     void create_unique_path(string path_name);
 

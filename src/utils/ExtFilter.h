@@ -14,10 +14,10 @@ using namespace std;
 class ExtFilter {
 public:
     ExtFilter();
-    ExtFilter(string conf);     // use boost to parse config
+    explicit ExtFilter(string &conf);     // use boost to parse config
 
-    bool is_in_accept(string path_ext);
-    string get_class(string path_ext);
+    bool is_in_accept(string &path_ext);
+    string get_class(string &path_ext);
 
 private:
     map<string, string> filter_accept;
