@@ -12,6 +12,7 @@ include_directories(${Boost_INCLUDE_DIR})
 
 # Target
 add_executable(SwarmRay src/main.cpp src/app/App.cpp src/app/App.h src/utils/CmdParser.cpp src/utils/PathGenerator.cpp src/utils/ExtFilter.cpp src/utils/ExtFilter.h src/conf/ConfigReader.cpp src/conf/ConfigReader.h)
+add_library(inireader src/libs/inih/ini.cpp src/libs/inih/INIReader.cpp)
 
 # link Boost libraries to the new target
 target_link_libraries(SwarmRay ${Boost_LIBRARIES})
