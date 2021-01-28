@@ -7,7 +7,7 @@
 #include <boost/filesystem.hpp>
 #include <cstring>
 #include <iostream>
-#include "extFilter.h"
+#include "ExtFilter.h"
 using namespace boost::filesystem;
 using namespace std;
 
@@ -25,7 +25,7 @@ private:
     path target_path;
 
     bool recur_search_add(const path& dir);
-    bool build_target_files(extFilter &white_list);
+    bool build_target_files(ExtFilter &white_list);
 };
 
 

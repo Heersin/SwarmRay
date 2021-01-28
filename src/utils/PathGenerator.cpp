@@ -30,7 +30,7 @@ bool PathGenerator::recur_search_add(const path &dir) {
     return true;
 }
 
-bool PathGenerator::build_target_files(extFilter &white_list) {
+bool PathGenerator::build_target_files(ExtFilter &white_list) {
     vector<path>::iterator i;
     string extension;
 

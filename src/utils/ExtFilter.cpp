@@ -2,10 +2,10 @@
 // Created by heersin on 1/27/21.
 //
 
-#include "extFilter.h"
-extFilter::extFilter() {}
+#include "ExtFilter.h"
+ExtFilter::ExtFilter() {}
 
-extFilter::extFilter(string conf) {
+ExtFilter::ExtFilter(string conf) {
     // TODO
     // conf parser
     // assume we have parsed it
@@ -17,13 +17,13 @@ extFilter::extFilter(string conf) {
     filter_accept.insert(pair<string, string>(".java", ".java"));
 }
 
-bool extFilter::is_in_accept(string path_ext) {
+bool ExtFilter::is_in_accept(string path_ext) {
     if (filter_accept.count(path_ext) == 0)
         return false;
     else
         return true;
 }
 
-string extFilter::get_class(string path_ext) {
+string ExtFilter::get_class(string path_ext) {
     return filter_accept[path_ext];
 }

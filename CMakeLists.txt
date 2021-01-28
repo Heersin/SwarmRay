@@ -11,7 +11,7 @@ find_package(Boost REQUIRED COMPONENTS program_options filesystem)
 include_directories(${Boost_INCLUDE_DIR})
 
 # Target
-add_executable(SwarmRay src/main.cpp src/app/App.cpp src/app/App.h src/utils/CmdParser.cpp src/utils/PathGenerator.cpp src/utils/extFilter.cpp src/utils/extFilter.h)
+add_executable(SwarmRay src/main.cpp src/app/App.cpp src/app/App.h src/utils/CmdParser.cpp src/utils/PathGenerator.cpp src/utils/ExtFilter.cpp src/utils/ExtFilter.h)
 
 # link Boost libraries to the new target
 target_link_libraries(SwarmRay ${Boost_LIBRARIES})
