@@ -23,3 +23,7 @@ add_executable(
 
 # link Boost libraries to the new target
 target_link_libraries(SwarmRay ${Boost_LIBRARIES})
+
+
+# Test Units
+add_subdirectory(test/)
