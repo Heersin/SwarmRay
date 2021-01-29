@@ -1,5 +1,7 @@
 //
 // Created by heersin on 1/27/21.
+// Recursive Explore A given path
+// get all file's paths
 //
 
 #ifndef SWARMRAY_PATHGENERATOR_H
@@ -19,7 +21,7 @@ public:
     void create_unique_path(string path_name);
 
 private:
-    map<string , vector<path>> all_target_files;
+    multimap<string, path> all_target_files;
     vector<path> all_files;
     string target_path_name;
     path target_path;

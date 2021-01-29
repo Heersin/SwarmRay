@@ -36,14 +36,16 @@ bool PathGenerator::build_target_files(ExtFilter &white_list) {
 
     for(i = all_files.begin(); i != all_files.end(); ++i)
     {
+        // get the extension of current file
         extension = (*i).extension().string();
+
         // not the extension we r searching for
         if (!white_list.is_in_accept(extension))
             continue;
 
-        // TODO should be stronger
-        all_target_files[white_list.get_class(extension)].push_back((*i).string());
+        // store the full file path in multimap
+        // key: <extension name> value: <file paths>
+        all_target_files.insert(make_pair(extension, (*i)));
     }
-
     return true;
 }

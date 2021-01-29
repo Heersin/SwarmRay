@@ -202,7 +202,7 @@ function(cxx_library name cxx_flags)
   cxx_library_with_type(${name} "" "${cxx_flags}" ${ARGN})
 endfunction()
 
-# cxx_executable_with_flags(name cxx_flags libs srcs...)
+# cxx_executable_with_flags(name cxx_flags ext_engines srcs...)
 #
 # creates a named C++ executable that depends on the given libraries and
 # is built from the given source files with the given compiler flags.
@@ -231,7 +231,7 @@ endfunction()
 
 # cxx_executable(name dir lib srcs...)
 #
-# creates a named target that depends on the given libs and is built
+# creates a named target that depends on the given ext_engines and is built
 # from the given source files.  dir/name.cc is implicitly included in
 # the source file list.
 function(cxx_executable name dir libs)
@@ -242,9 +242,9 @@ endfunction()
 # Sets PYTHONINTERP_FOUND and PYTHON_EXECUTABLE.
 find_package(PythonInterp)
 
-# cxx_test_with_flags(name cxx_flags libs srcs...)
+# cxx_test_with_flags(name cxx_flags ext_engines srcs...)
 #
-# creates a named C++ test that depends on the given libs and is built
+# creates a named C++ test that depends on the given ext_engines and is built
 # from the given source files with the given compiler flags.
 function(cxx_test_with_flags name cxx_flags libs)
   cxx_executable_with_flags(${name} "${cxx_flags}" "${libs}" ${ARGN})
@@ -257,9 +257,9 @@ function(cxx_test_with_flags name cxx_flags libs)
   endif()
 endfunction()
 
-# cxx_test(name libs srcs...)
+# cxx_test(name ext_engines srcs...)
 #
-# creates a named test target that depends on the given libs and is
+# creates a named test target that depends on the given ext_engines and is
 # built from the given source files.  Unlike cxx_test_with_flags,
 # test/name.cc is already implicitly included in the source file list.
 function(cxx_test name libs)
