@@ -1,5 +1,8 @@
 #include "app/App.h"
 #include "utils/CmdParser.h"
+#include "log/ezlog.h"
+
+INITIALIZE_EASYLOGGINGPP
 
 int main(int argc, char *argv[])
 {

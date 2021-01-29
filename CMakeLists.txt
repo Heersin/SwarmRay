@@ -5,14 +5,13 @@ project(SwarmRay)
 set(CMAKE_CXX_STANDARD 11)
 set(Boost_USE_STATIC_LIBS OFF) #enable dynamic linking
 
-# search for program options
+# search for BOOST
 find_package(Boost REQUIRED COMPONENTS program_options filesystem)
-
 include_directories(${Boost_INCLUDE_DIR})
 
 # Target
 add_library(inireader src/libs/inih/ini.cpp src/libs/inih/INIReader.cpp)
-add_library(easylogging src/libs/easyloggingpp/easylogging++.cc src/log/ezlog.cpp )
+add_library(easylogging src/libs/easyloggingpp/easylogging++.cc)
 add_executable(
         SwarmRay
         src/main.cpp src/app/App.cpp
@@ -21,9 +20,10 @@ add_executable(
         src/log/ezlog.cpp
 )
 
+
 # link Boost libraries to the new target
 target_link_libraries(SwarmRay ${Boost_LIBRARIES})
-
+target_link_libraries(SwarmRay inireader easylogging)
 
 # Test Units
 add_subdirectory(test/)

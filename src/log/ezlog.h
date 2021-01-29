@@ -7,6 +7,6 @@
 
 #include "../libs/easyloggingpp/easylogging++.h"
 
-void start_logging(int argc, char *argv)
+void start_logging(int argc, char *argv);
 
 #endif //SWARMRAY_EZLOG_H
