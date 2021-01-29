@@ -7,11 +7,11 @@ PathGenerator::PathGenerator() {
     target_path_name = nullptr;
 }
 
-PathGenerator::PathGenerator(string path_name) : target_path(path_name) {
+PathGenerator::PathGenerator(const string &path_name) : target_path(path_name) {
     target_path_name = path_name;
 }
 
-void PathGenerator::create_unique_path(string path_name) {
+void PathGenerator::create_unique_path(const string &path_name) {
     target_path_name = path_name;
     target_path = path(path_name);
 }

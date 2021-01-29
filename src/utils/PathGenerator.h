@@ -16,9 +16,9 @@ using namespace std;
 
 class PathGenerator {
 public:
-    explicit PathGenerator(string path_name);
+    explicit PathGenerator(const string &path_name);
     PathGenerator();
-    void create_unique_path(string path_name);
+    void create_unique_path(const string &path_name);
 
 private:
     multimap<string, path> all_target_files;

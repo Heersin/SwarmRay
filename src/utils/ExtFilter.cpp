@@ -17,13 +17,13 @@ ExtFilter::ExtFilter(const string &conf) {
     filter_accept.insert(pair<string, string>(".java", ".java"));
 }
 
-bool ExtFilter::is_in_accept(string &path_ext) {
+bool ExtFilter::is_in_accept(const string &path_ext) {
     if (filter_accept.count(path_ext) == 0)
         return false;
     else
         return true;
 }
 
-string ExtFilter::get_class(string &path_ext) {
+string ExtFilter::get_class(const string &path_ext) {
     return filter_accept[path_ext];
 }
