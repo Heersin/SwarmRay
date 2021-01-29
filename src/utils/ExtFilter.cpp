@@ -5,7 +5,7 @@
 #include "ExtFilter.h"
 ExtFilter::ExtFilter() {}
 
-ExtFilter::ExtFilter(string &conf) {
+ExtFilter::ExtFilter(const string &conf) {
     // TODO
     // conf parser
     // assume we have parsed it
