@@ -6,8 +6,7 @@
 #define SWARMRAY_COMMAND_H
 
 #include "../Task/Task.h"
-
-enum BUILTIN_SCANNER_TYPE {REGEX, SONIC, SYNTAX};
+#include "../langs.h"
 
 class Command {
 public:
