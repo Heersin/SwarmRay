@@ -3,3 +3,5 @@
 //
 
 #include "Task.h"
+
+int Task::getCurrentNo() {}
