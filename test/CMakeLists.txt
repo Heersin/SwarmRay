@@ -13,7 +13,7 @@ add_executable(
         Google_Tests_run
         CompileTest.cpp
         utils_tests/ExtFilter_Test.cpp ../src/utils/ExtFilter.cpp
-        utils_tests/PathGenerator_Test.cpp ../src/utils/PathGenerator.cpp)
+        utils_tests/PathGenerator_Test.cpp ../src/utils/PathGenerator.cpp ../src/core/Command/Command.cpp ../src/core/Command/Command.h)
 
 target_link_libraries(Google_Tests_run ${Boost_LIBRARIES})
 target_link_libraries(Google_Tests_run gtest gtest_main)
