@@ -18,6 +18,10 @@ char ** Task::getQueuedFiles() {
     return file_paths;
 }
 
+LANG_TYPE Task::getLangType() {
+    return lang_type;
+}
+
 void Task::addFileIntoQueue(char *filename)
 {
     // TODO Exception ?

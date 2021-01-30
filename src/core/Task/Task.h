@@ -24,6 +24,7 @@ public:
     char** getQueuedFiles();
     int getQueueLength();
     int getCurrentNo();
+    LANG_TYPE getLangType();
 
 private:
     // record the number of current task queue
