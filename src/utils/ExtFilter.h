@@ -14,7 +14,7 @@ using namespace std;
 class ExtFilter {
 public:
     ExtFilter();
-    explicit ExtFilter(const string &conf);     // use boost to parse config
+    // explicit ExtFilter(const string &conf);     // use boost to parse config
 
     bool is_in_accept(const string &path_ext);
     string get_class(const string &path_ext);

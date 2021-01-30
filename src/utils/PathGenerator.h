@@ -19,15 +19,23 @@ public:
     explicit PathGenerator(const string &path_name);
     PathGenerator();
     void create_unique_path(const string &path_name);
+    bool collectAllFiles();
+
+    const multimap<string, path> &getAllTargetFiles() const;
+
+    const vector<path> &getAllFiles() const;
+
+    const string &getTargetPathName() const;
 
 private:
     multimap<string, path> all_target_files;
     vector<path> all_files;
     string target_path_name;
     path target_path;
+    ExtFilter white_list;
 
     bool recur_search_add(const path& dir);
-    bool build_target_files(ExtFilter &white_list);
+    bool build_target_files();
 };
 
 

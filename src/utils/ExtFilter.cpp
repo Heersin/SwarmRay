@@ -3,9 +3,8 @@
 //
 
 #include "ExtFilter.h"
-ExtFilter::ExtFilter() {}
 
-ExtFilter::ExtFilter(const string &conf) {
+ExtFilter::ExtFilter() {
     // TODO
     // conf parser
     // assume we have parsed it

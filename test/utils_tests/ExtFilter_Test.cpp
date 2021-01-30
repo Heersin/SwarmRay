@@ -7,13 +7,13 @@
 
 TEST(ExtFilterBuildCase, TestAboutExtFilterMap)
 {
-    ExtFilter extFilter("nonsense");
+    ExtFilter extFilter;
     EXPECT_TRUE(true);
 }
 
 TEST(ExtFilterInMapCase, CheckElementInsideMap)
 {
-    ExtFilter extFilter("nonsense");
+    ExtFilter extFilter;
     string string1(".php");
     string string2(".cpp");
     string string3(".lua");
@@ -25,7 +25,7 @@ TEST(ExtFilterInMapCase, CheckElementInsideMap)
 
 TEST(ExtFilterGetClassCase, CheckElementInsideMap)
 {
-    ExtFilter extFilter("nonsense");
+    ExtFilter extFilter;
     string string1(".php5");
     string string1_(".php");
 

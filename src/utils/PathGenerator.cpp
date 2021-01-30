@@ -13,7 +13,7 @@ PathGenerator::PathGenerator(const string &path_name) : target_path(path_name) {
 
 void PathGenerator::create_unique_path(const string &path_name) {
     target_path_name = path_name;
-    target_path = path(path_name);
+    target_path = path(target_path_name);
 }
 
 bool PathGenerator::recur_search_add(const path &dir) {
@@ -30,7 +30,7 @@ bool PathGenerator::recur_search_add(const path &dir) {
     return true;
 }
 
-bool PathGenerator::build_target_files(ExtFilter &white_list) {
+bool PathGenerator::build_target_files() {
     vector<path>::iterator i;
     string extension;
 
@@ -48,4 +48,23 @@ bool PathGenerator::build_target_files(ExtFilter &white_list) {
         all_target_files.insert(make_pair(extension, (*i)));
     }
     return true;
+}
+
+bool PathGenerator::collectAllFiles()
+{
+    recur_search_add(target_path);
+    build_target_files();
+    return true;
+}
+
+const multimap<string, path> &PathGenerator::getAllTargetFiles() const {
+    return all_target_files;
+}
+
+const vector<path> &PathGenerator::getAllFiles() const {
+    return all_files;
+}
+
+const string &PathGenerator::getTargetPathName() const {
+    return target_path_name;
 }
