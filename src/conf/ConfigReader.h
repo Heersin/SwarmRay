@@ -13,10 +13,10 @@ using namespace std;
 class ConfigReader {
 public:
     explicit ConfigReader(string &conf_path);
-    string getString(string &section, string &keyname);
-    long getInt(string &section, string &keyname);
-    double getReal(string &section, string &keyname);
-    bool getBool(string &section, string &keyname);
+    string getString(const string &section, const string &keyname);
+    long getInt(const string &section, const string &keyname);
+    double getReal(const string &section, const string &keyname);
+    bool getBool(const string &section, const string &keyname);
 
 private:
     INIReader reader;
