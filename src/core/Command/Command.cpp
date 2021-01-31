@@ -3,22 +3,40 @@
 //
 
 #include "Command.h"
-BuiltInCommand::BuiltInCommand(BUILTIN_SCANNER_TYPE scannerType, Task &task) : command_task(task) {
-    scanner_type = scannerType;
+
+BuiltInCommand::BuiltInCommand(SearchScannerFactory &src_scanner_factory, Task &task) :
+command_task(task), factory(src_scanner_factory)
+{
+    scanner_type = SEARCH;
     lang_type = task.getLangType();
-
-    // choose scanner
-    scanner_name = get_scanner_name_by_lang_scanner_type(lang_type, scannerType);
 }
 
-BUILTIN_SCANNER_TYPE BuiltInCommand::getScannerType() const {
-    return scanner_type;
+BuiltInCommand::BuiltInCommand(SyntaxScannerFactory &syn_scanner_factory, Task &task) :
+command_task(task), factory(syn_scanner_factory)
+{
+    scanner_type = SYNTAX;
+    lang_type = task.getLangType();
 }
 
-BUILTIN_SCANNER_NAME BuiltInCommand::getScannerName() const {
-    return scanner_name;
+void BuiltInCommand::exec()
+{
+    int queue_len = command_task.getQueueLength();
+    char **queue = command_task.getQueuedFiles();
+    for (int i = 0; i < queue_len; ++i)
+    {
+        switch (lang_type)
+        {
+            case CPP:
+                factory.createCppScanner().scan(queue[i]);
+                break;
+            case JAVASCRIPT:
+                factory.createJsScanner().scan(queue[i]);
+                break;
+            case UNKNOWN_LANG:
+                break;
+            default:
+                break;
+        }
+    }
 }
 
-Task &BuiltInCommand::getCommandTask() const {
-    return command_task;
-}

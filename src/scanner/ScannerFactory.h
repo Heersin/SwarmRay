@@ -19,13 +19,13 @@ private:
  * A style
  */
 
-class SearchScannerFactory : AbsScannerFactory{
+class SearchScannerFactory : public AbsScannerFactory{
 public:
     CppScanner createCppScanner() override;
     JavascriptScanner createJsScanner() override;
 };
 
-class SyntaxScannerFactory : AbsScannerFactory{
+class SyntaxScannerFactory : public AbsScannerFactory{
 public:
     CppScanner createCppScanner() override;
     JavascriptScanner createJsScanner() override;
