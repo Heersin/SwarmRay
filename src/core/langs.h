@@ -13,8 +13,6 @@ enum LANG_TYPE {
     JAVASCRIPT,
     UNKNOWN_LANG};
 
-
-
 /* *
  * A dirty and quick hack to fetch name
  * Require: LANG_TYPE * 2 + SCANNER_TYPE = SCANNER_NAME

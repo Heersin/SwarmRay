@@ -8,11 +8,10 @@
 
 class AbsScannerFactory {
 public:
-
+    virtual JavascriptScanner createJsScanner() = 0;
+    virtual CppScanner createCppScanner() = 0;
 private:
-    // dumplicated methods
-    // for possible switch case limits.
-    // and make it more readable.
+    // TODO may require more?
 };
 
 /*
@@ -21,7 +20,15 @@ private:
  */
 
 class SearchScannerFactory : AbsScannerFactory{
+public:
+    CppScanner createCppScanner() override;
+    JavascriptScanner createJsScanner() override;
+};
 
+class SyntaxScannerFactory : AbsScannerFactory{
+public:
+    CppScanner createCppScanner() override;
+    JavascriptScanner createJsScanner() override;
 };
 
 #endif //SWARMRAY_SCANNERFACTORY_H
