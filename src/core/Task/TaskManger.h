@@ -17,6 +17,8 @@
 using namespace std;
 
 // single instance Task Manager
+typedef multimap<LANG_TYPE, string>::iterator TARGET_FILE_ITER;
+
 
 class TaskManger {
 public:
