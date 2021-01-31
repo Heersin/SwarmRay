@@ -18,7 +18,9 @@ add_executable(
         src/utils/CmdParser.cpp src/utils/PathGenerator.cpp src/utils/ExtFilter.cpp src/utils/ExtFilter.h
         src/conf/ConfigReader.cpp src/conf/ConfigReader.h
         src/log/ezlog.cpp
-        src/core/Command/Command.cpp src/core/Command/Command.h src/core/Task/Task.cpp src/core/Task/Task.h)
+        src/core/Command/Command.cpp src/core/Task/Task.cpp
+        src/scanner/ScannerFactory.cpp
+)
 
 
 # link Boost libraries to the new target

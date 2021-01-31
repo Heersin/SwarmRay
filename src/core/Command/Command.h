@@ -19,9 +19,18 @@ public:
     void exec() override;
     BuiltInCommand(BUILTIN_SCANNER_TYPE scannerType, Task &task);
 
+    BUILTIN_SCANNER_NAME getScannerName() const;
+
+    Task &getCommandTask() const;
+
+    BUILTIN_SCANNER_TYPE getScannerType() const;
+
 private:
     // detect which type of scanner should be used
     BUILTIN_SCANNER_TYPE scanner_type;
+    LANG_TYPE lang_type;
+    BUILTIN_SCANNER_NAME scanner_name;
+    Task &command_task;
 
     // TODO
     // other arguments may be required
