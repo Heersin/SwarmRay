@@ -32,6 +32,7 @@ void Scheduler::schedule()
             ProcManager procManager(command);
         }
 
+        // USE EXTERN TOOL
         if (appConfig.use_extern_scan())
         {
             ExternCommand command(appConfig.getExternScannerName(), current_task);

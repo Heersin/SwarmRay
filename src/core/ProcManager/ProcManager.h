@@ -7,6 +7,11 @@
 
 #include "../Command/Command.h"
 
+/**
+ * Use Asio to read File before scan ?
+ *
+ */
+
 class ProcManager {
 public:
     ProcManager(BuiltInCommand &builtInCommand);
