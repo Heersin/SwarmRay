@@ -10,9 +10,7 @@
 // TODO Add more Lang Type
 enum LANG_TYPE {
     CPP = 0,
-    JAVA,
-    PHP,
-    JS,
+    JAVASCRIPT,
     UNKNOWN_LANG};
 
 

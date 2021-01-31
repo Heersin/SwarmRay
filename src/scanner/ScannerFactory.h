@@ -8,7 +8,7 @@
 
 class AbsScannerFactory {
 public:
-    
+
 private:
     // dumplicated methods
     // for possible switch case limits.
@@ -22,6 +22,6 @@ private:
 
 class SearchScannerFactory : AbsScannerFactory{
 
-}
+};
 
 #endif //SWARMRAY_SCANNERFACTORY_H
