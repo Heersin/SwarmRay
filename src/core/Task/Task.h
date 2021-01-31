@@ -11,7 +11,6 @@
 using namespace std;
 
 
-
 class Task {
 public:
     Task();

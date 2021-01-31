@@ -15,12 +15,12 @@ add_library(easylogging src/libs/easyloggingpp/easylogging++.cc)
 add_executable(
         SwarmRay
         src/main.cpp src/app/App.cpp
-        src/utils/CmdParser.cpp src/utils/PathGenerator.cpp src/utils/ExtFilter.cpp src/utils/ExtFilter.h
+        src/utils/CmdParser.cpp src/utils/PathGenerator.cpp src/core/Task/ExtFilter.cpp src/core/Task/ExtFilter.h
         src/conf/ConfigReader.cpp src/conf/ConfigReader.h
         src/log/ezlog.cpp
         src/core/Command/Command.cpp src/core/Task/Task.cpp
         src/scanner/ScannerFactory.cpp
-)
+        src/core/Task/TaskManger.cpp src/core/Task/TaskManger.h)
 
 
 # link Boost libraries to the new target

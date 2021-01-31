@@ -9,7 +9,7 @@
 #include <boost/filesystem.hpp>
 #include <cstring>
 #include <iostream>
-#include "ExtFilter.h"
+#include "core/Task/ExtFilter.h"
 using namespace boost::filesystem;
 using namespace std;
 
@@ -19,23 +19,21 @@ public:
     explicit PathGenerator(const string &path_name);
     PathGenerator();
     void create_unique_path(const string &path_name);
-    bool collectAllFiles();
 
-    const multimap<string, path> &getAllTargetFiles() const;
-
-    const vector<path> &getAllFiles() const;
-
+    vector<path> &getAllFilePaths();
     const string &getTargetPathName() const;
 
 private:
-    multimap<string, path> all_target_files;
-    vector<path> all_files;
+    vector<path> all_file_paths;
     string target_path_name;
     path target_path;
-    ExtFilter white_list;
+    int total_filenum;
+public:
+    int getTotalFilenum() const;
+
+private:
 
     bool recur_search_add(const path& dir);
-    bool build_target_files();
 };
 
 
