@@ -3,7 +3,7 @@
 //
 
 #include "TaskManger.h"
-TaskManger::TaskManger(string &target_path) : white_list(), pathGenerator(target_path)
+TaskManger::TaskManger(const string &target_path) : white_list(), pathGenerator(target_path)
 {
     string extension;
     const vector<path> &all_files = pathGenerator.getAllFilePaths();

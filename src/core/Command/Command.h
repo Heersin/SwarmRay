@@ -36,7 +36,7 @@ private:
 class ExternCommand : public Command{
 public:
     void exec() override;
-    ExternCommand(string scanner_name, Task &task);
+    ExternCommand(const string &scanner_name, Task &task);
 };
 
 #endif //SWARMRAY_COMMAND_H

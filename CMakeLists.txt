@@ -20,7 +20,7 @@ add_executable(
         src/log/ezlog.cpp
         src/core/Command/Command.cpp src/core/Task/Task.cpp
         src/scanner/ScannerFactory.cpp
-        src/core/Task/TaskManger.cpp src/core/Task/TaskManger.h src/conf/Config.cpp src/conf/Config.h)
+        src/core/Task/TaskManger.cpp src/core/Task/TaskManger.h src/conf/Config.cpp src/conf/Config.h src/core/Scheduler/Scheduler.cpp src/core/Scheduler/Scheduler.h src/core/ProcManager/ProcManager.cpp src/core/ProcManager/ProcManager.h)
 
 
 # link Boost libraries to the new target

@@ -40,3 +40,8 @@ void BuiltInCommand::exec()
     }
 }
 
+
+ExternCommand::ExternCommand(const string &scanner_name, Task &task)
+{
+    // TODO Extern Call
+}

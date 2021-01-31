@@ -22,7 +22,7 @@ typedef multimap<LANG_TYPE, string>::iterator TARGET_FILE_ITER;
 
 class TaskManger {
 public:
-    TaskManger(string &target_path);
+    TaskManger(const string &target_path);
     bool no_more_task();
     Task &fetch_one_task();
 
