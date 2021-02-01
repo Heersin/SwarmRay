@@ -3,12 +3,12 @@
 //
 
 #include "search_engine.h"
-void register_search_engine(JavascriptScanner scanner)
+void register_search_engine(JavascriptScanner &scanner)
 {
     printf("register a search engine for Js scanner\n");
 }
 
-void register_search_engine(CppScanner scanner)
+void register_search_engine(CppScanner &scanner)
 {
     printf("register a search engine for C scanner\n");
 }

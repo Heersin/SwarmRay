@@ -6,5 +6,5 @@
 #define SWARMRAY_CPP_SYNTAX_FUNCTIONS_H
 #include "../CppScanner.h"
 
-void add_cpp_feature(CppScanner scanner);
+void add_cpp_feature(CppScanner &scanner);
 #endif //SWARMRAY_CPP_SYNTAX_FUNCTIONS_H

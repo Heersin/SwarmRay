@@ -5,6 +5,8 @@
 #ifndef SWARMRAY_CPPSCANNER_H
 #define SWARMRAY_CPPSCANNER_H
 
+#include "BaseScanner.h"
+
 class CppScanner : BaseScanner{
 public:
     // TODO CPP Scanner
