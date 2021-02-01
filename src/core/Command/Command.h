@@ -8,6 +8,7 @@
 #include "../Task/Task.h"
 #include "../langs.h"
 #include "../../scanner/ScannerFactory.h"
+#include <map>
 
 class Command {
 public:
@@ -36,7 +37,7 @@ private:
 class ExternCommand : public Command{
 public:
     void exec() override;
-    ExternCommand(const string &scanner_name, Task &task);
+    ExternCommand(const map<LANG_TYPE, string>, const string &target_path);
 };
 
 #endif //SWARMRAY_COMMAND_H
