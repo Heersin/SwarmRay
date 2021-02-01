@@ -14,7 +14,6 @@
 
 class ProcManager {
 public:
-    ProcManager();
     void launchTread(BuiltInCommand &command);
     void launchProc(EXTERN_COMMAND command, vector<string> &args);
 
