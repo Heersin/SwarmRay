@@ -17,8 +17,9 @@ void Scheduler::schedule()
     // USE EXTERN TOOL
     if (appConfig.use_extern_scan())
     {
-        ExternCommand command(appConfig.getExternProgMap(), appConfig.getTargetPath());
-        externManager.launchProc(command);
+        vector<string> py_args;
+        py_args.push_back(appConfig.getTargetPath());
+        externManager.launchProc(PYTHON_PLUGIN, py_args);
     }
 
     // USE BUILTIN TECHNIQUE

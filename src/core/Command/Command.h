@@ -8,7 +8,11 @@
 #include "../Task/Task.h"
 #include "../langs.h"
 #include "../../scanner/ScannerFactory.h"
-#include <map>
+
+enum EXTERN_COMMAND {
+    WEB_SERVER,
+    PYTHON_PLUGIN
+};
 
 class Command {
 public:
