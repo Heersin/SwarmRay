@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(ENV{PKG_CONFIG_PATH} /usr/lib/pkgconfig)
 find_package(PkgConfig)
-pkg_search_module(Pistache REQUIRED pistache)
+pkg_search_module(Pistache REQUIRED libpistache)
 
-message(STATUS "=== LIBRARIES: ${Pistache_LIBRARIES}")
-message(STATUS "=== INCLUDE_DIRS: ${Pistache_INCLUDE_DIRS}")
+add_executable(SwarmRay-jsonserver main.cpp)
+target_link_libraries(SwarmRay-jsonserver ${Pistache_LIBRARIES})
