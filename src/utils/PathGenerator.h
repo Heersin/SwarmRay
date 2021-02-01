@@ -9,7 +9,7 @@
 #include <boost/filesystem.hpp>
 #include <cstring>
 #include <iostream>
-#include "core/Task/ExtFilter.h"
+#include "../core/Task/ExtFilter.h"
 using namespace boost::filesystem;
 using namespace std;
 
