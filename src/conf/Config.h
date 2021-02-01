@@ -6,6 +6,7 @@
 #define SWARMRAY_CONFIG_H
 
 #include "ConfigReader.h"
+#include "../core/langs.h"
 
 class Config {
 public:
@@ -18,7 +19,8 @@ public:
     bool use_syntax_scan();
     bool use_extern_scan();
 
-    const string &getExternScannerName() const;
+    const map<LANG_TYPE, string> &getExternProgMap() const;
+
 
 private:
     // TODO design Config
@@ -29,7 +31,7 @@ private:
     bool switch_syntax_on;
     bool switch_extern_on;
 
-    string extern_prog;
+    map<LANG_TYPE, string> extern_prog_map;
 };
 
 

@@ -15,6 +15,8 @@ Config::Config(string &conf_path)
     switch_syntax_on = true;
     switch_search_on = true;
     switch_extern_on = true;
+
+    // TODO construct extern map from config file
 }
 
 const string &Config::getConfigName() const {
@@ -37,6 +39,6 @@ bool Config::use_syntax_scan() {
     return switch_syntax_on;
 }
 
-const string & Config::getExternScannerName() const {
-    return extern_prog;
+const map<LANG_TYPE, string> &Config::getExternProgMap() const {
+    return extern_prog_map;
 }
