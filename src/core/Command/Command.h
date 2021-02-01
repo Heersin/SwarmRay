@@ -37,7 +37,7 @@ private:
 class ExternCommand : public Command{
 public:
     void exec() override;
-    ExternCommand(const map<LANG_TYPE, string>, const string &target_path);
+    ExternCommand(const map<LANG_TYPE, string> &extern_progs, const string &target_path);
 };
 
 #endif //SWARMRAY_COMMAND_H

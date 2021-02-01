@@ -41,7 +41,7 @@ void BuiltInCommand::exec()
 }
 
 
-ExternCommand::ExternCommand(const map<LANG_TYPE, string>, const string &target_path)
+ExternCommand::ExternCommand(const map<LANG_TYPE, string> &extern_progs, const string &target_path)
 {
     // TODO Call python script
 }
