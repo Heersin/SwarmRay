@@ -6,7 +6,6 @@
 #define SWARMRAY_PROCMANAGER_H
 
 #include "../Command/Command.h"
-
 /**
  * Use Asio to read File before scan ?
  *
@@ -16,7 +15,6 @@ class ProcManager {
 public:
     ProcManager();
     void launchTread(BuiltInCommand &command);
-    void launchProc(ExternCommand &command);
 };
 
 

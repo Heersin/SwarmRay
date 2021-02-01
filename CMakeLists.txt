@@ -5,27 +5,40 @@ project(SwarmRay)
 set(CMAKE_CXX_STANDARD 11)
 set(Boost_USE_STATIC_LIBS OFF) #enable dynamic linking
 
-# search for BOOST
+# ================= search for BOOST =============
 find_package(Boost REQUIRED COMPONENTS program_options filesystem)
 include_directories(${Boost_INCLUDE_DIR})
 
+# ================== search for Python ==============
+find_package(PythonLibs REQUIRED)
+if(PYTHONLIBS_FOUND)
+    include_directories(${PYTHON_INCLUDE_DIR})
+else(PYTHONLIBS_FOUND)
+    message(FATAL_ERROR ”Python libs not found”)
+endif(PYTHONLIBS_FOUND)
+
+
+# ****************** Compile Process *****************
 # Target
 add_library(inireader src/libs/inih/ini.cpp src/libs/inih/INIReader.cpp)
 add_library(easylogging src/libs/easyloggingpp/easylogging++.cc)
 add_executable(
         SwarmRay
         src/main.cpp src/app/App.cpp
-        src/utils/CmdParser.cpp src/utils/PathGenerator.cpp src/core/Task/ExtFilter.cpp src/core/Task/ExtFilter.h
-        src/conf/ConfigReader.cpp src/conf/ConfigReader.h
+        src/utils/CmdParser.cpp src/utils/PathGenerator.cpp src/core/Task/ExtFilter.cpp
+        src/conf/ConfigReader.cpp src/conf/Config.cpp
         src/log/ezlog.cpp
         src/core/Command/Command.cpp src/core/Task/Task.cpp
         src/scanner/ScannerFactory.cpp
-        src/core/Task/TaskManger.cpp src/core/Task/TaskManger.h src/conf/Config.cpp src/conf/Config.h src/core/Scheduler/Scheduler.cpp src/core/Scheduler/Scheduler.h src/core/ProcManager/ProcManager.cpp src/core/ProcManager/ProcManager.h)
+        src/core/Task/TaskManger.cpp src/core/Scheduler/Scheduler.cpp src/core/ProcManager/ProcManager.cpp
+)
 
-
-# link Boost libraries to the new target
-target_link_libraries(SwarmRay ${Boost_LIBRARIES})
+# ****************** Link Process *****************
+# ================== 3rd libs contained in this proj ===============
 target_link_libraries(SwarmRay inireader easylogging)
+target_link_libraries(SwarmRay ${Boost_LIBRARIES})
+target_link_libraries(SwarmRay ${PYTHON_LIBRARIES})
+
 
 # Test Units
 add_subdirectory(test/)

@@ -34,10 +34,5 @@ private:
     // other arguments may be required
 };
 
-class ExternCommand : public Command{
-public:
-    void exec() override;
-    ExternCommand(const map<LANG_TYPE, string> &extern_progs, const string &target_path);
-};
 
 #endif //SWARMRAY_COMMAND_H
