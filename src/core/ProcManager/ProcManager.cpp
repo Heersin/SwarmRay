@@ -61,3 +61,12 @@ void ProcManager::launchPythonProc(vector<string> &args)
    return dest;
 }
  */
+
+void ProcManager::launchTread(BuiltInCommand &command)
+{
+    printf("launch a thread of builtin Command\n");
+}
+
+void ProcManager::launchWebProc(vector<string> &args) {
+    printf("launch a web server\n");
+}
