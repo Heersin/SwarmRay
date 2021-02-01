@@ -53,7 +53,7 @@ Task::Task() {
 Task::Task(LANG_TYPE type, int queue_length)
 {
     file_paths = (char **)malloc(queue_length * sizeof(char *));
-    LOG(DEBUG) << "fail to init Task";
+    LOG(DEBUG) << "init A task";
 
     queue_len = queue_length;
     cur_file_num = 0;

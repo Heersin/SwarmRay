@@ -20,11 +20,11 @@ Config::Config(string &conf_path)
     // TODO construct extern map from config file
 }
 
-Config::Config()
+Config::Config() : target_path("code_files")
 {
     switch_syntax_on = true;
     switch_search_on = true;
-    switch_extern_on = true;
+    switch_extern_on = false;
 }
 
 const string &Config::getConfigName() const {

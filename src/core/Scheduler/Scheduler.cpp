@@ -37,17 +37,20 @@ void Scheduler::schedule()
 
     while (!task_manager.no_more_task())
     {
+        LOG(DEBUG) << "process task ... ";
         Task &current_task = task_manager.fetch_one_task();
 
         // USE BUILTIN SCAN
         if (appConfig.use_search_scan())
         {
+            LOG(DEBUG) << "search scan";
             BuiltInCommand command(srh_factory, current_task);
             threadManager.launchTread(command);
         }
 
         if (appConfig.use_syntax_scan())
         {
+            LOG(DEBUG) << "Syntax scan";
             BuiltInCommand command(syn_factory, current_task);
             threadManager.launchTread(command);
         }

@@ -73,9 +73,18 @@ Task & TaskManger::fetch_one_task()
 {
     // TODO more exception
     if (task_queue.empty())
+    {
+        printf("Empty Task Queue!!!\n");
         throw exception();
+    }
+
 
     Task &cur_task = task_queue.front();
+
+    printf("ok to get front\n");
+
     task_queue.pop();
+
+    printf("fail to de queue\n");
     return cur_task;
 }

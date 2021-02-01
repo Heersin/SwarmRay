@@ -5,6 +5,7 @@
 #ifndef SWARMRAY_SCHEDULER_H
 #define SWARMRAY_SCHEDULER_H
 
+#include "../../log/ezlog.h"
 #include "../../conf/Config.h"
 #include "../../scanner/ScannerFactory.h"
 #include "../Task/TaskManger.h"
