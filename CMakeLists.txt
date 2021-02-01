@@ -29,8 +29,10 @@ add_executable(
         src/conf/ConfigReader.cpp src/conf/Config.cpp
         src/log/ezlog.cpp
         src/core/Command/Command.cpp src/core/Task/Task.cpp
-        src/scanner/ScannerFactory.cpp
         src/core/Task/TaskManger.cpp src/core/Scheduler/Scheduler.cpp src/core/ProcManager/ProcManager.cpp
+        src/scanner/scanner-search/search_engine.cpp
+        src/scanner/ScannerFactory.cpp src/scanner/CppScanner.cpp src/scanner/JavascriptScanner.cpp
+        src/scanner/scanner-syntax/cpp_syntax_functions.cpp src/scanner/scanner-syntax/js_syntax_funtions.cpp
 )
 
 # ****************** Link Process *****************
