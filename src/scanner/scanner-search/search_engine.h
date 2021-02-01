@@ -8,5 +8,6 @@
 #include "../JavascriptScanner.h"
 
 void register_search_engine(JavascriptScanner scanner);
+void register_search_engine(CppScanner scanner);
 
 #endif //SWARMRAY_SEARCH_ENGINE_H

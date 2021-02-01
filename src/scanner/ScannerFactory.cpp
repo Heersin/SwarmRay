@@ -20,3 +20,21 @@ JavascriptScanner SearchScannerFactory::createJsScanner()
     printf("Creating Js search Scanner ...\n");
     return scanner;
 }
+
+CppScanner SyntaxScannerFactory::createCppScanner()
+{
+    CppScanner scanner;
+    add_cpp_feature(scanner);
+
+    printf("Creating Cpp Syntax Scanner ...\n");
+    return scanner;
+}
+
+CppScanner SearchScannerFactory::createCppScanner()
+{
+    CppScanner scanner;
+    register_search_engine(scanner);
+
+    printf("Creating Cpp Search Scanner ...\n");
+    return scanner;
+}

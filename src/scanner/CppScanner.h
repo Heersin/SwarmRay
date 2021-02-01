@@ -5,9 +5,12 @@
 #ifndef SWARMRAY_CPPSCANNER_H
 #define SWARMRAY_CPPSCANNER_H
 
-
-class CppScanner {
-
+class CppScanner : BaseScanner{
+public:
+    // TODO CPP Scanner
+    bool scan(void *mem) override;
+    bool scan(string filename) override;
+    bool scan(char *filename) override;
 };
 
 

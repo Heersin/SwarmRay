@@ -3,3 +3,8 @@
 //
 
 #include "cpp_syntax_functions.h"
+
+void add_cpp_feature(CppScanner scanner)
+{
+    printf("add some Cpp features into Cpp Scanner\n");
+}
