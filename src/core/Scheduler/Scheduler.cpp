@@ -11,6 +11,17 @@ Scheduler::Scheduler(Config &app_config) : appConfig(app_config)
 // and manage them
 void Scheduler::schedule()
 {
+    ProcManager externManager;
+    ProcManager threadManager;
+
+    // USE EXTERN TOOL
+    if (appConfig.use_extern_scan())
+    {
+        ExternCommand command(appConfig.getExternProgMap(), appConfig.getTargetPath());
+        externManager.launchProc(command);
+    }
+
+    // USE BUILTIN TECHNIQUE
     SearchScannerFactory srh_factory;
     SyntaxScannerFactory syn_factory;
     TaskManger task_manager(appConfig.getTargetPath());
@@ -23,20 +34,13 @@ void Scheduler::schedule()
         if (appConfig.use_search_scan())
         {
             BuiltInCommand command(srh_factory, current_task);
-            ProcManager procManager(command);
+            threadManager.launchTread(command);
         }
 
         if (appConfig.use_syntax_scan())
         {
             BuiltInCommand command(syn_factory, current_task);
-            ProcManager procManager(command);
-        }
-
-        // USE EXTERN TOOL
-        if (appConfig.use_extern_scan())
-        {
-            ExternCommand command(appConfig.getExternProgMap(), appConfig.getTargetPath());
-            ProcManager procManager(command);
+            threadManager.launchTread(command);
         }
     }
 }

@@ -14,8 +14,9 @@
 
 class ProcManager {
 public:
-    ProcManager(BuiltInCommand &builtInCommand);
-    ProcManager(ExternCommand &externCommand);
+    ProcManager();
+    void launchTread(BuiltInCommand &command);
+    void launchProc(ExternCommand &command);
 };
 
 
