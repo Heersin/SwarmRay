@@ -5,6 +5,7 @@
 #ifndef SWARMRAY_APP_H
 #define SWARMRAY_APP_H
 
+#include "../core/Scheduler/Scheduler.h"
 
 class App {
 public:
@@ -13,6 +14,8 @@ public:
 
 private:
     bool run_state;
+    Config appConfig;
+    Scheduler global_scheduler;
 };
 
 

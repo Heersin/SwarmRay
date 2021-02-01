@@ -10,8 +10,9 @@ int main(int argc, char *argv[])
     CmdParser cmdcli;
 
     // invalid command line
-    if ( !cmdcli.parse(argc, argv))
-        return -1;
+    // TODO start parse
+//    if ( !cmdcli.parse(argc, argv))
+//        return -1;
 
     app.run();
 }

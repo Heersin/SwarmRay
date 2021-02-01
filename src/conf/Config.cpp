@@ -10,6 +10,7 @@ Config::Config(string &conf_path)
 
     // An example
     config_name = conf_reader.getString("basic", "name");
+    config_name = "fake";
 
     // TODO getBool from config file
     switch_syntax_on = true;
@@ -17,6 +18,13 @@ Config::Config(string &conf_path)
     switch_extern_on = true;
 
     // TODO construct extern map from config file
+}
+
+Config::Config()
+{
+    switch_syntax_on = true;
+    switch_search_on = true;
+    switch_extern_on = true;
 }
 
 const string &Config::getConfigName() const {

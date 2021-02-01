@@ -5,10 +5,11 @@
 #include "App.h"
 #include <iostream>
 
-App::App() {
+App::App() : appConfig(), global_scheduler(appConfig){
     run_state = false;
 }
 
 void App::run() {
     std::cout << "[*] Run State - " << (run_state ? "On" : "Off");
+    global_scheduler.schedule();
 }

@@ -11,6 +11,7 @@
 class Config {
 public:
     Config(string &conf_path);
+    Config(); // test only
 
     const string &getConfigName() const;
     const string &getTargetPath() const;
