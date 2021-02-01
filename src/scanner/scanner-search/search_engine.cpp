@@ -3,3 +3,7 @@
 //
 
 #include "search_engine.h"
+void register_search_engine(JavascriptScanner scanner)
+{
+    printf("register a search engine for Js scanner\n");
+}

@@ -5,4 +5,8 @@
 #ifndef SWARMRAY_SEARCH_ENGINE_H
 #define SWARMRAY_SEARCH_ENGINE_H
 
+#include "../JavascriptScanner.h"
+
+void register_search_engine(JavascriptScanner scanner);
+
 #endif //SWARMRAY_SEARCH_ENGINE_H

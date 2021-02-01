@@ -6,6 +6,7 @@
 #define SWARMRAY_SCANNERFACTORY_H
 #include "BaseScanner.h"
 #include "JavascriptScanner.h"
+#include "scanner-search/search_engine.h"
 #include "scanner-syntax/js_syntax_funtions.h"
 
 class AbsScannerFactory {
