@@ -17,13 +17,7 @@ public:
     virtual bool scan(void *mem) = 0;
 };
 
-class JavascriptScanner : BaseScanner{
-    // TODO JAVASCRIPT Scanner
-public:
-    bool scan(char *filename) override;
-    bool scan(string filename) override;
-    bool scan(void *mem) override;
-};
+
 
 class CppScanner : BaseScanner{
 public:
