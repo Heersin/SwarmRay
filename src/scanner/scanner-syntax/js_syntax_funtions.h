@@ -1,0 +1,8 @@
+//
+// Created by heersin on 2/1/21.
+//
+
+#ifndef SWARMRAY_JS_SYNTAX_FUNTIONS_H
+#define SWARMRAY_JS_SYNTAX_FUNTIONS_H
+
+#endif //SWARMRAY_JS_SYNTAX_FUNTIONS_H
