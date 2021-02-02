@@ -49,11 +49,16 @@ bool TaskManger::createTaskQueue()
         // traverse the target file specified by CURRENT LANGUAGE TYPE
         pair<TARGET_FILE_ITER, TARGET_FILE_ITER> ret = target_files.equal_range(current_lang);
         Task current_task(current_lang, MAX_WORKER);
-        for(multimap<LANG_TYPE, string>::iterator iter=ret.first; iter != ret.second; ++iter)
+        printf("init Done\n");
+        for(auto iter=ret.first; iter != ret.second; ++iter)
         {
             // task should contain [MAX_WORKER] files // aka 5 files now
             if (current_task.getCurrentNo() < MAX_WORKER)
-                current_task.addFileIntoQueue(iter->second);
+            {
+                printf("Start Add File\n");
+                current_task.addFileIntoQueue((*iter).second);
+                printf("Add One File Into Current Task\n");
+            }
         }
 
         // add task to TaskManager's queue

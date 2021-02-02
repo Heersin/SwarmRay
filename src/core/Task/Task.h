@@ -18,7 +18,7 @@ public:
     Task(LANG_TYPE type, int queue_length);
 
     void addFileIntoQueue(char *filename);
-    void addFileIntoQueue(string filename);
+    void addFileIntoQueue(const string &filename);
 
     vector<string> getQueuedFiles();
     int getQueueLength();

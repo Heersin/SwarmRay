@@ -33,11 +33,11 @@ void Task::addFileIntoQueue(char *filename)
     LOG(DEBUG) << "Cannot Add More";
 }
 
-void Task::addFileIntoQueue(string filename)
+void Task::addFileIntoQueue(const string &filename)
 {
     if (cur_file_num < queue_len)
     {
-        file_paths[cur_file_num] = filename;
+        file_paths.push_back(filename);
         cur_file_num += 1;
     }
 }
