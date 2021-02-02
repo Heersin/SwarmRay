@@ -5,8 +5,6 @@
 #ifndef SWARMRAY_SCANNERFACTORY_H
 #define SWARMRAY_SCANNERFACTORY_H
 #include "BaseScanner.h"
-#include "JavascriptScanner.h"
-#include "CppScanner.h"
 
 #include "scanner-search/search_engine.h"
 #include "scanner-syntax/js_syntax_funtions.h"

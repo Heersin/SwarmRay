@@ -2,7 +2,7 @@
 // Created by heersin on 2/1/21.
 //
 
-#include "JavascriptScanner.h"
+#include "BaseScanner.h"
 // TODO Finish scan method
 bool JavascriptScanner::scan(void *mem) {
     return true;

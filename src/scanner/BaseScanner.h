@@ -18,5 +18,20 @@ public:
 };
 
 
+class CppScanner : BaseScanner{
+public:
+    // TODO CPP Scanner
+    bool scan(void *mem) override;
+    bool scan(string filename) override;
+    bool scan(char *filename) override;
+};
+
+class JavascriptScanner : BaseScanner{
+    // TODO JAVASCRIPT Scanner
+public:
+    bool scan(char *filename) override;
+    bool scan(string filename) override;
+    bool scan(void *mem) override;
+};
 
 #endif //SWARMRAY_BASESCANNER_H

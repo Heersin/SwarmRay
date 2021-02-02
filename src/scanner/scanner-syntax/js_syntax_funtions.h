@@ -4,7 +4,7 @@
 
 #ifndef SWARMRAY_JS_SYNTAX_FUNTIONS_H
 #define SWARMRAY_JS_SYNTAX_FUNTIONS_H
-#include "../JavascriptScanner.h"
+#include "../BaseScanner.h"
 
 // factory call this to produce a JsScanner
 void add_js_feature(JavascriptScanner &scanner);

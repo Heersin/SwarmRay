@@ -4,7 +4,7 @@
 
 #ifndef SWARMRAY_CPP_SYNTAX_FUNCTIONS_H
 #define SWARMRAY_CPP_SYNTAX_FUNCTIONS_H
-#include "../CppScanner.h"
+#include "../BaseScanner.h"
 
 void add_cpp_feature(CppScanner &scanner);
 #endif //SWARMRAY_CPP_SYNTAX_FUNCTIONS_H
