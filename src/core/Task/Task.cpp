@@ -14,7 +14,7 @@ int Task::getQueueLength() {
     return queue_len;
 }
 
-char ** Task::getQueuedFiles() {
+vector<string> Task::getQueuedFiles() {
     return file_paths;
 }
 
@@ -37,14 +37,13 @@ void Task::addFileIntoQueue(string filename)
 {
     if (cur_file_num < queue_len)
     {
-        file_paths[cur_file_num] = (char *)filename.c_str();
+        file_paths[cur_file_num] = filename;
         cur_file_num += 1;
     }
 }
 
 // not recommend
 Task::Task() {
-    file_paths = NULL;
     queue_len = 0;
     cur_file_num = 0;
     lang_type = UNKNOWN_LANG;
@@ -52,7 +51,6 @@ Task::Task() {
 
 Task::Task(LANG_TYPE type, int queue_length)
 {
-    file_paths = (char **)malloc(queue_length * sizeof(char *));
     LOG(DEBUG) << "init A task";
 
     queue_len = queue_length;
@@ -61,17 +59,6 @@ Task::Task(LANG_TYPE type, int queue_length)
     lang_type = type;
 }
 
-Task::~Task()
-{
-    // do not free the string stored inside
-    // they may be const
-    if (file_paths != NULL)
-        free(file_paths);
-
-    cur_file_num = 0;
-    file_paths = NULL;
-    queue_len = 0;
-}
 
 
 
