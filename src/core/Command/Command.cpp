@@ -20,7 +20,7 @@ command_task(task), factory(syn_scanner_factory)
 
 void BuiltInCommand::exec()
 {
-    int queue_len = command_task.getQueueLength();
+    int queue_len = command_task.getCurrentNo();
     char **queue = command_task.getQueuedFiles();
     printf("execting command\n");
     for (int i = 0; i < queue_len; ++i)

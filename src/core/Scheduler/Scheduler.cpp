@@ -57,11 +57,14 @@ void Scheduler::schedule()
             threadManager.launchTread(command);
         }
 
+        LOG(DEBUG) << "One Task Done";
+
         // test only
         if (tmp >= 1)
             break;
 
         tmp += 1;
         // task_manager.pop_one_task();
+        task_manager.echo();
     }
 }

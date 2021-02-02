@@ -65,6 +65,7 @@ void ProcManager::launchPythonProc(vector<string> &args)
 void ProcManager::launchTread(BuiltInCommand &command)
 {
     printf("launch a thread of builtin Command\n");
+    command.exec();
 }
 
 void ProcManager::launchWebProc(vector<string> &args) {

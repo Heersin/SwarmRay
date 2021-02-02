@@ -64,8 +64,13 @@ bool TaskManger::createTaskQueue()
 
 bool TaskManger::no_more_task()
 {
-    if (task_queue.empty())
+    if (!task_queue.size())
+    {
+        printf("mo more task\n");
         return true;
+    }
+
+    printf("still have task\n");
     return false;
 }
 
@@ -91,4 +96,9 @@ Task TaskManger::fetch_one_task()
 
 void TaskManger::pop_one_task() {
     task_queue.pop();
+}
+
+void TaskManger::echo()
+{
+    printf("I'm still here\n");
 }
