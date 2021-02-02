@@ -24,7 +24,8 @@ class TaskManger {
 public:
     TaskManger(const string &target_path);
     bool no_more_task();
-    Task &fetch_one_task();
+    Task fetch_one_task();
+    void pop_one_task();
 
 private:
     ExtFilter white_list;

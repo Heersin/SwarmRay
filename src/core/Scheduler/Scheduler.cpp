@@ -35,10 +35,12 @@ void Scheduler::schedule()
     SyntaxScannerFactory syn_factory;
     TaskManger task_manager(appConfig.getTargetPath());
 
+    int tmp = 0;
+
     while (!task_manager.no_more_task())
     {
         LOG(DEBUG) << "process task ... ";
-        Task &current_task = task_manager.fetch_one_task();
+        Task current_task = task_manager.fetch_one_task();
 
         // USE BUILTIN SCAN
         if (appConfig.use_search_scan())
@@ -54,5 +56,12 @@ void Scheduler::schedule()
             BuiltInCommand command(syn_factory, current_task);
             threadManager.launchTread(command);
         }
+
+        // test only
+        if (tmp >= 1)
+            break;
+
+        tmp += 1;
+        // task_manager.pop_one_task();
     }
 }

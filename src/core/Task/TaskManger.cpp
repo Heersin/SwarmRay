@@ -69,7 +69,7 @@ bool TaskManger::no_more_task()
     return false;
 }
 
-Task & TaskManger::fetch_one_task()
+Task TaskManger::fetch_one_task()
 {
     // TODO more exception
     if (task_queue.empty())
@@ -79,12 +79,16 @@ Task & TaskManger::fetch_one_task()
     }
 
 
-    Task &cur_task = task_queue.front();
+    Task cur_task = task_queue.front();
 
     printf("ok to get front\n");
 
-    task_queue.pop();
+    // task_queue.pop();
 
-    printf("fail to de queue\n");
+    printf("pop this\n");
     return cur_task;
+}
+
+void TaskManger::pop_one_task() {
+    task_queue.pop();
 }
