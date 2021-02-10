@@ -55,9 +55,7 @@ bool TaskManger::createTaskQueue()
             // task should contain [MAX_WORKER] files // aka 5 files now
             if (current_task.getCurrentNo() < MAX_WORKER)
             {
-                printf("Start Add File\n");
                 current_task.addFileIntoQueue((*iter).second);
-                printf("Add One File Into Current Task\n");
             }
         }
 
@@ -70,12 +68,8 @@ bool TaskManger::createTaskQueue()
 bool TaskManger::no_more_task()
 {
     if (!task_queue.size())
-    {
-        printf("mo more task\n");
         return true;
-    }
 
-    printf("still have task\n");
     return false;
 }
 
@@ -91,11 +85,9 @@ Task TaskManger::fetch_one_task()
 
     Task cur_task = task_queue.front();
 
-    printf("ok to get front\n");
 
     // task_queue.pop();
 
-    printf("pop this\n");
     return cur_task;
 }
 
