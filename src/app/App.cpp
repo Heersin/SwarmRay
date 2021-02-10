@@ -10,6 +10,6 @@ App::App() : appConfig(), global_scheduler(appConfig){
 }
 
 void App::run() {
-    std::cout << "[*] Run State - " << (run_state ? "On" : "Off");
+    std::cout << "[*] Run State - " << (run_state ? "On" : "Off") << endl;
     global_scheduler.schedule();
 }

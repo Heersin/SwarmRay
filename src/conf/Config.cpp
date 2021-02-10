@@ -22,9 +22,12 @@ Config::Config(string &conf_path)
 
 Config::Config() : target_path("code_files")
 {
-    switch_syntax_on = true;
-    switch_search_on = true;
-    switch_extern_on = false;
+    switch_syntax_on = false;
+    switch_search_on = false;
+    switch_extern_on = true;
+
+    extern_prog_map[CPP] = "cpp_scan_plugin.py";
+    extern_prog_map[JAVASCRIPT] = "js_scan_plugin.py";
 }
 
 const string &Config::getConfigName() const {

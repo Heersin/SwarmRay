@@ -23,23 +23,19 @@ void ProcManager::launchProc(EXTERN_COMMAND command, vector<string> &args) {
 void ProcManager::launchPythonProc(vector<string> &args)
 {
     int argc = args.size();
-    const wchar_t **argv = (const wchar_t **)malloc(argc * sizeof(wchar_t *));
-
-    // convert from string to w_chart *
-    // not robust, single byte charset only
-    for(int i = 0; i < argc; ++i)
-    {
-        string current_string = args[i];
-        wstring tmp_wstring = wstring(current_string.begin(), current_string.end());
-        argv[i] = tmp_wstring.c_str();
+    wchar_t** argv = (wchar_t **)PyMem_Malloc(sizeof(wchar_t*)*argc);
+    for (int i=0; i<argc; i++) {
+        wchar_t* arg = Py_DecodeLocale(args[i].c_str(), NULL);
+        argv[i] = arg;
     }
-
-    Py_SetProgramName(argv[0]);
     Py_Initialize();
-    PySys_SetArgv(argc, const_cast<wchar_t **>(argv));
+    PySys_SetArgv(argc, argv);
+
+    printf("[PyManager]Try Launch %s\n", args[0].c_str());
 
     FILE *plugin_py = fopen(args[0].c_str(), "r");
     PyRun_SimpleFile(plugin_py, reinterpret_cast<const char *>(argv[0]));
+    fclose(plugin_py);
     Py_Finalize();
 }
 
@@ -61,6 +57,20 @@ void ProcManager::launchPythonProc(vector<string> &args)
    return dest;
 }
  */
+
+/* Another one
+ *     int argc = args.size();
+    const wchar_t **argv = (const wchar_t **)malloc(argc * sizeof(wchar_t *));
+
+    // convert from string to w_chart *
+    // not robust, single byte charset only
+    for(int i = 0; i < argc; ++i)
+    {
+        string current_string = args[i];
+        wstring tmp_wstring = wstring(current_string.begin(), current_string.end());
+        argv[i] = tmp_wstring.c_str();
+    }
+ * */
 
 void ProcManager::launchTread(BuiltInCommand &command)
 {

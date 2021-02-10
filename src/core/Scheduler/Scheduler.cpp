@@ -24,8 +24,8 @@ void Scheduler::schedule()
         for (auto plugin_iter = plugins.begin(); plugin_iter != plugins.end(); ++plugin_iter)
         {
             vector<string> py_args;
-            py_args.push_back((*plugin_iter).second);
-            py_args.push_back(appConfig.getTargetPath());
+            py_args.push_back((*plugin_iter).second);           // plugin script name
+            py_args.push_back(appConfig.getTargetPath());       // target path
             externManager.launchProc(PYTHON_PLUGIN, py_args);
         }
     }
