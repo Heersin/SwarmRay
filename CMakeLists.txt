@@ -44,4 +44,4 @@ target_link_libraries(SwarmRay ${PYTHON_LIBRARIES})
 
 # Test Units
 add_subdirectory(test/)
-add_subdirectory(jsonserver/)
+# add_subdirectory(jsonserver/)
