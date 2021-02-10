@@ -17,6 +17,7 @@ TaskManger::TaskManger(const string &target_path) : white_list(), pathGenerator(
         if (!white_list.is_in_accept(extension))
             continue;
 
+        printf("[*]Accept %s\n", (*i).c_str());
         // store the full file path in multimap
         // key: <LANG_TYPE> value: <file path string>
         target_files.insert(
@@ -39,12 +40,9 @@ bool TaskManger::createTaskQueue()
     const int MAX_WORKER = 5;
     // iterate over different language type
 
-    int number_of_current_lang_files;
-    int tmp_cnt;                            // count number of files of current task
     for (int lang = CPP; lang != UNKNOWN_LANG; ++lang)
     {
         LANG_TYPE current_lang = static_cast<LANG_TYPE>(lang);
-        number_of_current_lang_files = target_files.count(current_lang);
 
         // traverse the target file specified by CURRENT LANGUAGE TYPE
         pair<TARGET_FILE_ITER, TARGET_FILE_ITER> ret = target_files.equal_range(current_lang);
@@ -52,15 +50,24 @@ bool TaskManger::createTaskQueue()
         printf("init Done\n");
         for(auto iter=ret.first; iter != ret.second; ++iter)
         {
-            // task should contain [MAX_WORKER] files // aka 5 files now
-            if (current_task.getCurrentNo() < MAX_WORKER)
+            // task can contain [MAX_WORKER] files at most
+            // aka 5 files now
+            printf("LANG : %d, FILENAME: %s\n", (*iter).first, (*iter).second.c_str());
+
+            if (current_task.getCurrentNo() >= MAX_WORKER)
             {
-                current_task.addFileIntoQueue((*iter).second);
+                task_queue.push(current_task);
+                current_task = Task(current_lang, MAX_WORKER);
+                continue;
             }
+
+            current_task.addFileIntoQueue((*iter).second);
         }
 
-        // add task to TaskManager's queue
-        task_queue.push(current_task);
+        // if the last task contains less than MAX_WORKER files
+        // push it
+        if (current_task.getCurrentNo() != 0)
+            task_queue.push(current_task);
     }
     return true;
 }
@@ -84,18 +91,10 @@ Task TaskManger::fetch_one_task()
 
 
     Task cur_task = task_queue.front();
-
-
-    // task_queue.pop();
-
+    task_queue.pop();
     return cur_task;
 }
 
 void TaskManger::pop_one_task() {
     task_queue.pop();
-}
-
-void TaskManger::echo()
-{
-    printf("I'm still here\n");
 }

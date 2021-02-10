@@ -42,6 +42,9 @@ void Scheduler::schedule()
         LOG(DEBUG) << "process task ... ";
         Task current_task = task_manager.fetch_one_task();
 
+        for (int i = 0; i < current_task.getCurrentNo(); ++i)
+            printf("[Run %d] Task File [%d]: %s\n",tmp, i, (current_task.getQueuedFiles())[i].c_str());
+
         // USE BUILTIN SCAN
         if (appConfig.use_search_scan())
         {
@@ -64,7 +67,6 @@ void Scheduler::schedule()
             break;
 
         tmp += 1;
-        // task_manager.pop_one_task();
-        task_manager.echo();
+        //task_manager.pop_one_task();
     }
 }

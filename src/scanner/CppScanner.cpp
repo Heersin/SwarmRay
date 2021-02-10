@@ -8,6 +8,7 @@ bool CppScanner::scan(void *mem) {
 }
 
 bool CppScanner::scan(string filename) {
+    printf("Scanning file %s\n", filename.c_str());
     return true;
 }
 

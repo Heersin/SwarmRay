@@ -26,7 +26,6 @@ public:
     bool no_more_task();
     Task fetch_one_task();
     void pop_one_task();
-    void echo();
 
 private:
     ExtFilter white_list;

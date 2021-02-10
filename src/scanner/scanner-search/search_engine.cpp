@@ -10,5 +10,5 @@ void register_search_engine(JavascriptScanner &scanner)
 
 void register_search_engine(CppScanner &scanner)
 {
-    printf("register a search engine for C scanner\n");
+    printf("register a search engine for Cpp scanner\n");
 }

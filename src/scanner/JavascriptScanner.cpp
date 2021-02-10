@@ -13,5 +13,6 @@ bool JavascriptScanner::scan(char *filename) {
 }
 
 bool JavascriptScanner::scan(string filename) {
+    printf("Scanning file %s\n", filename.c_str());
     return true;
 }
