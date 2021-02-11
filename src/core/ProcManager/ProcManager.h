@@ -7,6 +7,8 @@
 
 #include "../Command/Command.h"
 #include <vector>
+#include <boost/process.hpp>
+
 /**
  * Use Asio to read File before scan ?
  *
@@ -19,7 +21,7 @@ public:
 
 private:
     void launchPythonProc(vector<string> &args);
-    void launchWebProc(vector<string> &args);
+    void launchWebProc();
 };
 
 
