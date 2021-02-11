@@ -15,12 +15,12 @@ public:
 
     const string &getConfigName() const;
     const string &getTargetPath() const;
+    const string &getPluginSysName() const;
 
     bool use_search_scan();
     bool use_syntax_scan();
     bool use_extern_scan();
 
-    const map<LANG_TYPE, string> &getExternProgMap() const;
 
 
 private:
@@ -28,11 +28,12 @@ private:
     string config_name;
     string target_path;
 
+    string plugin_sys_name;
+
     bool switch_search_on;
     bool switch_syntax_on;
     bool switch_extern_on;
 
-    map<LANG_TYPE, string> extern_prog_map;
 };
 
 

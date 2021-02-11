@@ -17,17 +17,10 @@ void Scheduler::schedule()
     // USE EXTERN TOOL
     if (appConfig.use_extern_scan())
     {
-        const map<LANG_TYPE, string> &plugins = appConfig.getExternProgMap();
-
-        // simply call each plugin to process target
-        // TODO split plugins into A given Python Script
-        for (auto plugin_iter = plugins.begin(); plugin_iter != plugins.end(); ++plugin_iter)
-        {
-            vector<string> py_args;
-            py_args.push_back((*plugin_iter).second);           // plugin script name
-            py_args.push_back(appConfig.getTargetPath());       // target path
-            externManager.launchProc(PYTHON_PLUGIN, py_args);
-        }
+        vector<string> py_args;
+        py_args.push_back(appConfig.getPluginSysName());
+        py_args.push_back(appConfig.getTargetPath());       // target path
+        externManager.launchProc(PYTHON_PLUGIN, py_args);
     }
 
     // USE BUILTIN TECHNIQUE

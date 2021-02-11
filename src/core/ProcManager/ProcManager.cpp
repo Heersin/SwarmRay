@@ -37,5 +37,5 @@ void ProcManager::launchTread(BuiltInCommand &command)
 }
 
 void ProcManager::launchWebProc() {
-    bp::spawn(bp::search_path("python"), "test_server.py")
+    bp::spawn(bp::search_path("python"), "test_server.py");
 }
