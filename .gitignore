@@ -36,3 +36,4 @@
 cmake-build-debug/
 mytest/
 server/venv/
+src/scanner-extern/plugins/__pycache__/
