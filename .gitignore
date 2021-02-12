@@ -36,4 +36,5 @@
 cmake-build-debug/
 mytest/
 server/venv/
+server/jsonserver/__pycache__/
 src/scanner-extern/plugins/__pycache__/
