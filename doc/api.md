@@ -4,8 +4,8 @@
 
 ### Run
 针对一个项目的完整扫描，需包含如下信息
-- id
-- hashtag 是否针对同一个项目之类的
+- rid
+- hashtag 是否针对同一个项目之类的(zip之后hash)
 - target 目标路径
 - count 目标总数
 - name 扫描任务名
@@ -23,6 +23,7 @@
     - score 危险评分
     - type 所属类型
     - scanner 报告来源
+    - pos 漏洞位置(line no.)
 
 ### Batch
 内置方法扫描相关，包含多个Task
