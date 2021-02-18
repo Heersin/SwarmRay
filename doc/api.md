@@ -10,13 +10,17 @@
 - count 目标总数
 - name 扫描任务名
 - status 已扫描数
+- scan_date 扫描时间
+- score 评分
 
 ### Task
 针对某一个文件的扫描，需包含如下信息
 - tid task id
 - rid 标记所属的run
 - filename 文件路径
+- hashtag hash值
 - lang 语言
+- score 评分
 - results
     - policy 匹配的审计策略
     - description 描述
@@ -62,3 +66,31 @@
 ## State Machine
 
 ## DataBase Design
+
+3 Collections
+
+### Run
+- rid - Char
+- hashtag - Char
+- target_path - Char
+- count - Integer
+- scan_name - Char
+- scan_date - Date
+- score - Float
+
+### Task
+- tid - Char
+- rid - Char - related run (we can find the related run by using this filed)
+- filename - Char
+- hashtag - Char
+- language - Integer
+- score - Float
+
+### Report
+- tid - Char - related task
+- policy - Char
+- description - Char
+- score - Float 
+- vuln_type - Char
+- scanner - Char
+- position - Char
