@@ -1,4 +1,6 @@
 from .BasePlugin import BasePlugin
+from .utils import cmd_helper
+import re
 
 
 class ClangTidyOfficial(BasePlugin):
@@ -9,6 +11,38 @@ class ClangTidyOfficial(BasePlugin):
 
     def run(self, target_file):
         print("CLANG TIDY SCAN TARGET {}".format(target_file))
+
+        clang_tidy_string = "clang-tidy"
+        clang_tidy_checks = "-checks=*"
+        #clang_tidy_other_args = "-header-filter=.*"
+
+        no_compile_flag = '--'
+        cmd = cmd_helper.CmdHelper([clang_tidy_string, target_file, clang_tidy_checks, no_compile_flag])
+
+        raw_output = cmd.get_output()
+        raw_output = ''.join(raw_output)
+
+        pattern_str = "\n(.*)]\n"
+        pattern = re.compile(pattern_str)
+        grp_output = re.findall(pattern, raw_output)
+
+        # dirty and quick
+
+        for result in grp_output:
+            tokens = result.split(':')
+
+            lv = tokens[3]
+            desc_and_policy = tokens[4].split('[')
+            desc = desc_and_policy[0]
+            #policy = desc_and_policy[1]
+
+            print('FILENAME: {}'.format(tokens[0]))
+            print('\tPOSITION: line {} col {}'.format(tokens[1], tokens[2]))
+            print('\tDESCRIPTION: {}'.format(desc))
+            #print('\tPOLICY: {}'.format(policy))
+            print('\tLEVEL: {}'.format(lv))
+
+
         return
 
     def info(self):

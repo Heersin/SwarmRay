@@ -5,9 +5,9 @@ def main(target_path):
     for plugin_name in support_plugins:
         plugin = support_plugins[plugin_name]()
         plugin.info()
-    print(target_path)
+        plugin.run(target_path)
 
 
 if __name__ == '__main__':
 
-    main("code_path")
+    main("tests/clang_test1.cpp")
