@@ -9,8 +9,9 @@ class Run(Model):
     hashtag = CharField()
     target_path = CharField()
     count = IntegerField()
-    scan_date = DateField()
+    scan_date = CharField()
     score = FloatField()
+    scan_status = IntegerField()
 
     class Meta:
         database = db

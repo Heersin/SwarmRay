@@ -3,22 +3,26 @@ import os
 from .task import Task
 from .run import Run
 from .report import Report
-from .. import config
+import sys
+sys.path.append('..')
+import config
 
 db = SqliteDatabase(config.DATABASE_NAME)
+
 
 # TODO More Robust
 def db_init():
     if os.path.exists(config.DATABASE_NAME):
+        print('[*]Use original Sqlite db')
         return
     try:
         db.connect()
-        db.create_tables([Task, Run, Report])
+        db.create_tables([Task, Run])
+        print("[*]Init Database ...")
+        db.close()
     except Exception:
         # TODO More Exception
         print("[x]Init Database Failed")
-    finally:
-        db.close()
 
 
 def db_connect():
