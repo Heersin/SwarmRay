@@ -65,6 +65,18 @@ class Run(Resource):
         return r_json, 201
 
     def delete(self, run_id):
-        pass
+        run_tasks = models.Task.select().where(models.Task.rid == run_id)
+        for task in run_tasks:
+            tmp_tid = task.tid
+            task_reports = models.Report.\
+                select().\
+                where((models.Report.tid == tmp_tid) & (models.Report.rid == run_id))
 
+            for report in task_reports:
+                report.delete_instance()
+            task.delete_instance()
 
+        current_run = models.Run.get(models.Run.rid == run_id)
+        current_run_json = json.dumps(model_to_dict(current_run))
+        current_run.delete_instance()
+        return current_run_json, 204

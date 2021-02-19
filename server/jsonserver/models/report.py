@@ -5,6 +5,7 @@ db = SqliteDatabase('swarmray.db')
 
 class Report(Model):
     tid = CharField()
+    rid = CharField()
     policy = CharField()
     description = CharField()
     score = FloatField()

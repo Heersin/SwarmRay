@@ -65,8 +65,38 @@ class Task(Resource):
         task_json = json.dumps(model_to_dict(task))
         return task_json, 200
 
-    def delete(self, task_id):
-        task = models.Task.get(models.Task.tid == task_id)
-        task_json = json.dumps(model_to_dict(task))
-        task.delete_instance()
-        return task_json, 204
+    def delete(self, run_id):
+        parser = reqparse.RequestParser()
+        parser.add_argument('tid', location='args')
+        args = parser.parse_args()
+
+        tasks = []
+
+        if 'tid' in args:
+            tid = args['tid']
+            tmp_task = models.Task().select().where(
+                (models.Task.tid == tid) & (models.Task.rid == run_id)
+            ).get()
+            tasks.append(tmp_task)
+        else:
+            run_tasks = models.Task().select().where(models.Task.rid == run_id)
+            for t in run_tasks:
+                tasks.append(t)
+
+        # delete related report
+        for t in tasks:
+            tmp_tid = t.tid
+            tmp_rid = run_id
+
+            tmp_reports = models.Report().select().where(
+                (models.Report.tid == tmp_tid) & (models.Report.rid == tmp_rid)
+            )
+
+            # delete reports
+            for r in tmp_reports:
+                r.delete_instance()
+
+            # delete task
+            t.delete_instance()
+
+        return '', 204

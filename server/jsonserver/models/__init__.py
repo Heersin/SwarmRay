@@ -17,7 +17,7 @@ def db_init():
         return
     try:
         db.connect()
-        db.create_tables([Task, Run])
+        db.create_tables([Task, Run, Report])
         print("[*]Init Database ...")
         db.close()
     except Exception:
