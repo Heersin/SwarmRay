@@ -9,7 +9,8 @@ class ClangTidyOfficial(BasePlugin):
     version = "0.0.1"
     plugin_file = "clang_tidy_plugin.py"
 
-    def run(self, target_file):
+    def run(self, extra_args):
+        target_file = self.target
         print("CLANG TIDY SCAN TARGET {}".format(target_file))
 
         clang_tidy_string = "clang-tidy"

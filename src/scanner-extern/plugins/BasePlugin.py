@@ -6,9 +6,10 @@ class BasePlugin(metaclass=ABCMeta):
     description = "Base Plugin Class And Should Not Be Init"
     version = "0.0.0"
     plugin_file = None
+    target = None
 
     @abstractmethod
-    def run(self, target_file):
+    def run(self, extra_args):
         ''' DOCs Here '''
         return
 
