@@ -55,11 +55,8 @@ void Scheduler::schedule()
 
         LOG(DEBUG) << "One Task Done";
 
-        // test only
-        if (tmp >= 1)
-            break;
-
         tmp += 1;
+
         //task_manager.pop_one_task();
     }
 }

@@ -74,7 +74,7 @@ bool TaskManger::createTaskQueue()
 
 bool TaskManger::no_more_task()
 {
-    if (!task_queue.size())
+    if (task_queue.empty())
         return true;
 
     return false;
