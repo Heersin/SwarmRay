@@ -1,4 +1,5 @@
 from flask_restful import reqparse, Resource
+from .cors import CorsResource
 from playhouse.shortcuts import model_to_dict
 import json
 import sys
@@ -6,7 +7,7 @@ sys.path.append('..')
 import models
 
 
-class TaskList(Resource):
+class TaskList(CorsResource):
     def post(self):
         # TODO Move Parser into config
         # or other place
@@ -41,7 +42,7 @@ class TaskList(Resource):
         return result_json, 200
 
 
-class Task(Resource):
+class Task(CorsResource):
     def get(self, run_id):
         parser = reqparse.RequestParser()
         parser.add_argument('tid', location='args')

@@ -1,4 +1,5 @@
 from flask_restful import reqparse, Resource
+from .cors import CorsResource
 from playhouse.shortcuts import model_to_dict
 import json
 import sys
@@ -6,12 +7,18 @@ sys.path.append('..')
 import models
 
 
-class RunList(Resource):
+class RunList(CorsResource):
     def get(self):
         result = []
+        i = 0
         for r in models.Run().select():
-            result.append(model_to_dict(r))
-        result_json = json.dumps(result)
+            dict_r = model_to_dict(r)
+            dict_r['key'] = i
+            i += 1
+            result.append(dict_r)
+
+        final_result = {"data":result}
+        result_json = final_result
         return result_json, 200
 
     def post(self):
@@ -26,6 +33,8 @@ class RunList(Resource):
         parser.add_argument('scan_status', type=int, location='form', required=True)
         args = parser.parse_args()
 
+        print(args)
+
         new_run = models.Run().create(
             scan_name=args['scan_name'],
             rid=args['rid'],
@@ -38,11 +47,12 @@ class RunList(Resource):
         )
 
         new_run.save()
-        new_run_json = json.dumps(model_to_dict(new_run))
+        new_run_json = model_to_dict(new_run)
+
         return new_run_json, 201
 
 
-class Run(Resource):
+class Run(CorsResource):
     def get(self, run_id):
         r = models.Run().get(models.Run.rid == run_id)
         r_json = json.dumps(model_to_dict(r))
