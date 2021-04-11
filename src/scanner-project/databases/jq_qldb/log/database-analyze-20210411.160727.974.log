@@ -1,0 +1,15 @@
+[2021-04-11 16:07:28] This is codeql database analyze ./databases/jq_qldb rules/cpp/codeql-suites/cpp-security-and-quality.qls --output=./jq_qldb_result_0 --format=csv
+[2021-04-11 16:07:28] Log file was started late.
+[2021-04-11 16:07:28] [PROGRESS] database analyze> Running queries.
+[2021-04-11 16:07:28] Running plumbing command: codeql database run-queries --ml-model-path= --native-library-path= --warnings=show --no-rerun -- /home/heersin/Workspace/mine/SwarmRay/src/scanner-project/databases/jq_qldb rules/cpp/codeql-suites/cpp-security-and-quality.qls
+[2021-04-11 16:07:28] Calling plumbing command: codeql resolve ram --format=json
+[2021-04-11 16:07:28] Plumbing command codeql resolve ram completed:
+                      [
+                        "-J-Xmx981M",
+                        "--off-heap-ram=981"
+                      ]
+[2021-04-11 16:07:28] Spawning plumbing command: execute queries -J-Xmx981M --off-heap-ram=981 --verbosity=progress --logdir=/home/heersin/Workspace/mine/SwarmRay/src/scanner-project/databases/jq_qldb/log --ml-model-path=/home/heersin/Workspace/mine/SwarmRay/src/scanner-project --native-library-path=/home/heersin/Workspace/mine/SwarmRay/src/scanner-project --warnings=show --no-rerun --output=/home/heersin/Workspace/mine/SwarmRay/src/scanner-project/databases/jq_qldb/results -- /home/heersin/Workspace/mine/SwarmRay/src/scanner-project/databases/jq_qldb/db-cpp rules/cpp/codeql-suites/cpp-security-and-quality.qls
+[2021-04-11 16:12:54] [ERROR] Spawned process exited abnormally (code 2; tried to run: [/home/heersin/softwares/codeql/codeql-cli/tools/linux64/java/bin/java, -Xmx981M, -Djava.library.path=/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib, -cp, /home/heersin/softwares/codeql/codeql-cli/tools/codeql.jar, com.semmle.cli2.CodeQL, execute, queries, -J-Xmx981M, --off-heap-ram=981, --verbosity=progress, --logdir=/home/heersin/Workspace/mine/SwarmRay/src/scanner-project/databases/jq_qldb/log, --ml-model-path=/home/heersin/Workspace/mine/SwarmRay/src/scanner-project, --native-library-path=/home/heersin/Workspace/mine/SwarmRay/src/scanner-project, --warnings=show, --no-rerun, --output=/home/heersin/Workspace/mine/SwarmRay/src/scanner-project/databases/jq_qldb/results, --, /home/heersin/Workspace/mine/SwarmRay/src/scanner-project/databases/jq_qldb/db-cpp, rules/cpp/codeql-suites/cpp-security-and-quality.qls])
+[2021-04-11 16:12:54] Plumbing command codeql execute queries terminated with status 2.
+[2021-04-11 16:12:54] Plumbing command codeql database run-queries completed with status 2.
+[2021-04-11 16:12:54] Exiting with code 2
