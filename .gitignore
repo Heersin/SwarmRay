@@ -43,3 +43,5 @@ src/scanner-extern/plugins/__pycache__/
 src/scanner-extern/plugins/utils/__pycache__/
 output/
 venv/
+
+src/scanner-project/databases/
