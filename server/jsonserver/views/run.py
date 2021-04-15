@@ -29,7 +29,6 @@ class RunList(CorsResource):
         parser.add_argument('count', type=int, location='form', required=True)
         parser.add_argument('scan_name', location='form', required=True)
         parser.add_argument('scan_date', location='form', required=True)
-        parser.add_argument('score', type=float, location='form', required=True)
         parser.add_argument('scan_status', type=int, location='form', required=True)
         args = parser.parse_args()
 
@@ -42,7 +41,6 @@ class RunList(CorsResource):
             target_path=args['target_path'],
             count=args['count'],
             scan_date=args['scan_date'],
-            score=args['score'],
             scan_status=args['scan_status']
         )
 
@@ -61,14 +59,11 @@ class Run(CorsResource):
     def patch(self, run_id):
         parser = reqparse.RequestParser()
         parser.add_argument('scan_status', type=int, location='form')
-        parser.add_argument('score', type=float, location='form')
         args = parser.parse_args()
 
         r = models.Run().get(models.Run.rid == run_id)
         if 'scan_status' in args:
             r.status = args['scan_status']
-        if 'score' in args:
-            r.score = args['score']
 
         r.save()
         r_json = json.dumps(model_to_dict(r))

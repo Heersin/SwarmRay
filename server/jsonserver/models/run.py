@@ -10,7 +10,6 @@ class Run(Model):
     target_path = CharField()
     count = IntegerField()
     scan_date = CharField()
-    score = FloatField()
     scan_status = IntegerField()
 
     class Meta:

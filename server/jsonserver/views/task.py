@@ -17,7 +17,9 @@ class TaskList(CorsResource):
         parser.add_argument('rid', location='form', required=True)
         parser.add_argument('hashtag', location='form', required=True)
         parser.add_argument('language', type=int, location='form', required=True)
-        parser.add_argument('score', type=float, location='form', required=True)
+
+        parser.add_argument('level', location='form', required=True)
+        parser.add_argument('message', location='form', required=True)
         args = parser.parse_args()
 
         task = models.Task.create(
@@ -26,11 +28,12 @@ class TaskList(CorsResource):
             rid=args['rid'],
             hashtag=args['hashtag'],
             language=args['language'],
-            score=args['score']
+            level=args['level'],
+            message=args['message']
         )
 
         task.save()
-        task_json = json.dumps(model_to_dict(task))
+        task_json = model_to_dict(task)
         return task_json, 201
 
     def get(self):
