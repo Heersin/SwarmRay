@@ -1,7 +1,7 @@
 from .BasePlugin import BasePlugin
 from .utils import cmd_helper
 import re
-
+from time.datetime import datetime
 
 class ClangTidyOfficial(BasePlugin):
     name = "clang tidy official plugin"
@@ -10,7 +10,11 @@ class ClangTidyOfficial(BasePlugin):
     plugin_file = "clang_tidy_plugin.py"
 
     def run(self, extra_args):
-        target_file = self.target
+        target_file = extra_args['target_path']
+        project_name = extra_args['proj_name']
+        rid = extra_args['rid']
+        scan_date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
         print("CLANG TIDY SCAN TARGET {}".format(target_file))
 
         clang_tidy_string = "clang-tidy"
