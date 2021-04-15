@@ -11,7 +11,7 @@ class RunList(CorsResource):
     def get(self):
         result = []
         i = 0
-        for r in models.Run().select():
+        for r in models.Run.select():
             dict_r = model_to_dict(r)
             dict_r['key'] = i
             i += 1
@@ -51,37 +51,37 @@ class RunList(CorsResource):
 
 
 class Run(CorsResource):
-    def get(self, run_id):
-        r = models.Run().get(models.Run.rid == run_id)
-        r_json = json.dumps(model_to_dict(r))
+    def get(self, rid):
+        r = models.Run.get(models.Run.rid == rid)
+        r_json = model_to_dict(r)
         return r_json, 200
 
-    def patch(self, run_id):
+    def patch(self, rid):
         parser = reqparse.RequestParser()
         parser.add_argument('scan_status', type=int, location='form')
         args = parser.parse_args()
 
-        r = models.Run().get(models.Run.rid == run_id)
+        r = models.Run.get(models.Run.rid == rid)
         if 'scan_status' in args:
             r.status = args['scan_status']
 
         r.save()
-        r_json = json.dumps(model_to_dict(r))
+        r_json = model_to_dict(r)
         return r_json, 201
 
-    def delete(self, run_id):
-        run_tasks = models.Task.select().where(models.Task.rid == run_id)
+    def delete(self, rid):
+        run_tasks = models.Task.select().where(models.Task.rid == rid)
         for task in run_tasks:
             tmp_tid = task.tid
             task_reports = models.Report.\
                 select().\
-                where((models.Report.tid == tmp_tid) & (models.Report.rid == run_id))
+                where((models.Report.tid == tmp_tid) & (models.Report.rid == rid))
 
             for report in task_reports:
                 report.delete_instance()
             task.delete_instance()
 
-        current_run = models.Run.get(models.Run.rid == run_id)
-        current_run_json = json.dumps(model_to_dict(current_run))
+        current_run = models.Run.get(models.Run.rid == rid)
+        current_run_json = model_to_dict(current_run)
         current_run.delete_instance()
         return current_run_json, 204

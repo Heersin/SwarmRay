@@ -16,10 +16,11 @@ class TaskList(CorsResource):
         parser.add_argument('tid', location='form', required=True)
         parser.add_argument('rid', location='form', required=True)
         parser.add_argument('hashtag', location='form', required=True)
-        parser.add_argument('language', type=int, location='form', required=True)
+        parser.add_argument('language', location='form', required=True)
 
         parser.add_argument('level', location='form', required=True)
         parser.add_argument('message', location='form', required=True)
+        parser.add_argument('pos', location='form', required=True)
         args = parser.parse_args()
 
         task = models.Task.create(
@@ -29,7 +30,8 @@ class TaskList(CorsResource):
             hashtag=args['hashtag'],
             language=args['language'],
             level=args['level'],
-            message=args['message']
+            message=args['message'],
+            pos=args['pos']
         )
 
         task.save()
@@ -41,35 +43,36 @@ class TaskList(CorsResource):
         for task in models.Task.select():
             result.append(model_to_dict(task))
 
-        result_json = json.dumps(result)
+        result_json = {'data':result}
         return result_json, 200
 
 
 class Task(CorsResource):
-    def get(self, run_id):
+    def get(self, rid):
         parser = reqparse.RequestParser()
         parser.add_argument('tid', location='args')
         args = parser.parse_args()
 
-        if 'tid' in args:
+        if args['tid'] is not None:
             tid = args['tid']
         else:
-            # list task by given run_id
+            # list task by given rid
             result = []
-            tasks = models.Task().select().where(models.Task.rid == run_id)
+            tasks = models.Task.select().where(models.Task.rid == rid)
             for t in tasks:
                 result.append(model_to_dict(t))
-            result_json = json.dumps(result)
+            result_json = {'data' : result}
             return result_json, 200
 
-        task = models.Task().select().where(
-            (models.Task.tid == tid) & (models.Task.rid == run_id)
+        task = models.Task.select().where(
+            (models.Task.tid == tid) & (models.Task.rid == rid)
         ).get()
+        print("single")
 
-        task_json = json.dumps(model_to_dict(task))
+        task_json = model_to_dict(task)
         return task_json, 200
 
-    def delete(self, run_id):
+    def delete(self, rid):
         parser = reqparse.RequestParser()
         parser.add_argument('tid', location='args')
         args = parser.parse_args()
@@ -78,21 +81,21 @@ class Task(CorsResource):
 
         if 'tid' in args:
             tid = args['tid']
-            tmp_task = models.Task().select().where(
-                (models.Task.tid == tid) & (models.Task.rid == run_id)
+            tmp_task = models.Task.select().where(
+                (models.Task.tid == tid) & (models.Task.rid == rid)
             ).get()
             tasks.append(tmp_task)
         else:
-            run_tasks = models.Task().select().where(models.Task.rid == run_id)
+            run_tasks = models.Task.select().where(models.Task.rid == rid)
             for t in run_tasks:
                 tasks.append(t)
 
         # delete related report
         for t in tasks:
             tmp_tid = t.tid
-            tmp_rid = run_id
+            tmp_rid = rid
 
-            tmp_reports = models.Report().select().where(
+            tmp_reports = models.Report.select().where(
                 (models.Report.tid == tmp_tid) & (models.Report.rid == tmp_rid)
             )
 

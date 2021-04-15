@@ -8,8 +8,11 @@ class Task(Model):
     tid = CharField()
     rid = CharField()
     hashtag = CharField()
-    language = IntegerField()
-    score = FloatField()
+    language = CharField()
+
+    level=CharField()
+    message=CharField()
+    pos=CharField()
 
     class Meta:
         database = db
