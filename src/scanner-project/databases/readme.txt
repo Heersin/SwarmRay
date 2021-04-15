@@ -1,1 +1,0 @@
-Dir for codeql databases
