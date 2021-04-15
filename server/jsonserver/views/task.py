@@ -15,7 +15,6 @@ class TaskList(CorsResource):
         parser.add_argument('filename', location='form', required=True)
         parser.add_argument('tid', location='form', required=True)
         parser.add_argument('rid', location='form', required=True)
-        parser.add_argument('hashtag', location='form', required=True)
         parser.add_argument('language', location='form', required=True)
 
         parser.add_argument('level', location='form', required=True)
@@ -27,7 +26,6 @@ class TaskList(CorsResource):
             filename=args['filename'],
             tid=args['tid'],
             rid=args['rid'],
-            hashtag=args['hashtag'],
             language=args['language'],
             level=args['level'],
             message=args['message'],

@@ -24,12 +24,9 @@ class RunList(CorsResource):
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('rid', location='form', required=True)
-        parser.add_argument('hashtag', location='form', required=True)
         parser.add_argument('target_path', location='form', required=True)
-        parser.add_argument('count', type=int, location='form', required=True)
         parser.add_argument('scan_name', location='form', required=True)
         parser.add_argument('scan_date', location='form', required=True)
-        parser.add_argument('scan_status', type=int, location='form', required=True)
         args = parser.parse_args()
 
         print(args)
@@ -37,11 +34,8 @@ class RunList(CorsResource):
         new_run = models.Run().create(
             scan_name=args['scan_name'],
             rid=args['rid'],
-            hashtag=args['hashtag'],
             target_path=args['target_path'],
-            count=args['count'],
             scan_date=args['scan_date'],
-            scan_status=args['scan_status']
         )
 
         new_run.save()
@@ -55,19 +49,6 @@ class Run(CorsResource):
         r = models.Run.get(models.Run.rid == rid)
         r_json = model_to_dict(r)
         return r_json, 200
-
-    def patch(self, rid):
-        parser = reqparse.RequestParser()
-        parser.add_argument('scan_status', type=int, location='form')
-        args = parser.parse_args()
-
-        r = models.Run.get(models.Run.rid == rid)
-        if 'scan_status' in args:
-            r.status = args['scan_status']
-
-        r.save()
-        r_json = model_to_dict(r)
-        return r_json, 201
 
     def delete(self, rid):
         run_tasks = models.Task.select().where(models.Task.rid == rid)

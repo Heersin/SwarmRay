@@ -7,7 +7,6 @@ class Task(Model):
     filename = CharField()
     tid = CharField()
     rid = CharField()
-    hashtag = CharField()
     language = CharField()
 
     level=CharField()
