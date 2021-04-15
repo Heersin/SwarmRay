@@ -7,7 +7,7 @@ def send_run(run_data):
         run_data
     )
 
-def send_task(run_id, task_data):
+def send_task(task_data):
     requests.post(
         config.NEW_TASK_API,
         task_data

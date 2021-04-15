@@ -12,6 +12,7 @@ class Task(Model):
     level=CharField()
     message=CharField()
     pos=CharField()
+    rule=CharField()
 
     class Meta:
         database = db

@@ -1,7 +1,8 @@
 from .BasePlugin import BasePlugin
 from .utils import cmd_helper
 import re
-from time.datetime import datetime
+from datetime import datetime
+from .post import poster
 
 class ClangTidyOfficial(BasePlugin):
     name = "clang tidy official plugin"
@@ -10,7 +11,7 @@ class ClangTidyOfficial(BasePlugin):
     plugin_file = "clang_tidy_plugin.py"
 
     def run(self, extra_args):
-        target_file = extra_args['target_path']
+        target_file = self.target
         project_name = extra_args['proj_name']
         rid = extra_args['rid']
         scan_date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
@@ -31,20 +32,50 @@ class ClangTidyOfficial(BasePlugin):
         pattern = re.compile(pattern_str)
         grp_output = re.findall(pattern, raw_output)
 
+        # register a run then send it to json server
+        run_data = {
+            'rid' : rid,
+            'target_path' : target_file,
+            'scan_name' : project_name,
+            'scan_date' : scan_date
+        }
+        poster.send_run(run_data)
+
         # dirty and quick
-
+        count = 0
         for result in grp_output:
-            tokens = result.split(':')
+            count += 1
+            paras = result.split(': ')
 
-            lv = tokens[3]
-            desc_and_policy = tokens[4].split('[')
+            # first part
+            tokens = paras[0].split(':')
+            filename = tokens[0]
+            position = tokens[1] + ':' + tokens[2]
+
+            # second part
+            lv = paras[1]
+
+            # third part
+            desc_and_policy = paras[2].split('[')
             desc = desc_and_policy[0]
-            #policy = desc_and_policy[1]
+            policy = desc_and_policy[1]
 
-            print('FILENAME: {}'.format(tokens[0]))
-            print('\tPOSITION: line {} col {}'.format(tokens[1], tokens[2]))
-            print('\tDESCRIPTION: {}'.format(desc))
-            #print('\tPOLICY: {}'.format(policy))
+            task_data = {
+                'filename' : filename,
+                'tid' : count,
+                'rid' : rid,
+                'language' : 'cpp',
+                'level' : lv,
+                'message' : desc,
+                'pos' : position,
+                'rule' : policy
+            }
+            poster.send_task(task_data)
+
+            print('FILENAME: {}'.format(filename))
+            print('\tPOSITION: {}'.format(position))
+            print('\tMESSAGE: {}'.format(desc))
+            print('\tPOLICY: {}'.format(policy))
             print('\tLEVEL: {}'.format(lv))
 
 

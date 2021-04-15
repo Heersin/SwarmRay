@@ -20,6 +20,7 @@ class TaskList(CorsResource):
         parser.add_argument('level', location='form', required=True)
         parser.add_argument('message', location='form', required=True)
         parser.add_argument('pos', location='form', required=True)
+        parser.add_argument('rule', location='form', required=True)
         args = parser.parse_args()
 
         task = models.Task.create(
@@ -29,7 +30,8 @@ class TaskList(CorsResource):
             language=args['language'],
             level=args['level'],
             message=args['message'],
-            pos=args['pos']
+            pos=args['pos'],
+            rule=args['rule']
         )
 
         task.save()

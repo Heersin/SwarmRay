@@ -16,5 +16,9 @@ def list_plugins():
 
 if __name__ == '__main__':
 
-    main("tests/clang_test1.cpp", None)
+    extra_args = {
+        'proj_name' : 'plugin_test',
+        'rid' : '2'
+    }
+    main("tests/clang_test1.cpp", extra_args)
     list_plugins()
